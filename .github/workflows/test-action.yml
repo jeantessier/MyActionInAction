@@ -5,20 +5,20 @@ on:
     inputs:
       name:
         description: The name of the person to greet
-        default: '@jeantessier'
+        required: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo to use the action locally
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@v4
 
       - name: Run my own container action
         id: my-action
         uses: ./
         with:
-          who-to-greet: ${{ inputs.name }}
+          who-to-greet: ${{ inputs.name || '@jeantessier' }}
 
       - name: Output the answer
         run: echo "The answer is ${{ steps.my-action.outputs.answer }}"
