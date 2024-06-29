@@ -1,7 +1,11 @@
 name: Test Action
 on:
-  - push
-  - workflow_dispatch
+  push:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: The name of the person to greet
+        default: '@jeantessier'
 
 jobs:
   test:
@@ -14,7 +18,7 @@ jobs:
         id: my-action
         uses: ./
         with:
-          who-to-greet: '@jeantessier'
+          who-to-greet: ${{ inputs.name }}
 
       - name: Output the answer
         run: echo "The answer is ${{ steps.my-action.outputs.answer }}"
