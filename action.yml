@@ -1,5 +1,8 @@
 name: "Jean Tessier's Action in Action"
 description: 'Greets someone and returns always 42.'
+branding:
+  icon: book-open
+  color: yellow
 inputs:
   who-to-greet:
     description: 'Who to greet'
